@@ -25,11 +25,11 @@ import {
 } from "~/components/ui/form";
 import { useToast } from "~/components/ui/use-toast";
 
-import { privateEntryProtector } from "~/utils/auth.server";
+import { pageProtector } from "~/utils/auth.server";
 import { loginForm } from "~/schemas/form";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  await privateEntryProtector(request, "/app");
+  await pageProtector(request, "/app", "PUBLIC");
 
   return null;
 };

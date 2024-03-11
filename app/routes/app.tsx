@@ -4,6 +4,7 @@ import { createBrowserClient } from "@supabase/ssr";
 import { useEffect, useState } from "react";
 
 import { createServerClient } from "~/utils/supabase.server";
+import { pageProtector } from "~/utils/auth.server";
 
 import type { LoaderFunctionArgs } from "@remix-run/node";
 
@@ -12,6 +13,8 @@ import type { LoaderFunctionArgs } from "@remix-run/node";
 // [1] https://remix.run/docs/en/v1/guides/routing#pathless-layout-routes
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
+  await pageProtector(request, "/app/login", "PRIVATE");
+
   // environment variables may be stored somewhere other than
   // `process.env` in runtimes other than node
   // we need to pipe these Supabase environment variables to the browser
