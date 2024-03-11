@@ -8,6 +8,8 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
+import { Toaster } from "./components/ui/toaster";
+
 import styles from "./global.css";
 
 import type { LinksFunction } from "@remix-run/node";
@@ -31,6 +33,7 @@ export default function App() {
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
+        <Toaster />
       </body>
     </html>
   );
