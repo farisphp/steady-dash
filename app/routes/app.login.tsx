@@ -1,7 +1,8 @@
 import { LoaderFunctionArgs } from "@remix-run/node";
 import { useOutletContext } from "@remix-run/react";
 import { SupabaseClient } from "@supabase/supabase-js";
-import { privateEntryProtector } from "utils/auth.server";
+
+import { privateEntryProtector } from "~/utils/auth.server";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   await privateEntryProtector(request, "/app");
@@ -24,5 +25,9 @@ export default function Login() {
     }
   };
 
-  return <button onClick={handleLogin}>LOGIN</button>;
+  return (
+    <div>
+      <button onClick={handleLogin}>LOGIN</button>
+    </div>
+  );
 }

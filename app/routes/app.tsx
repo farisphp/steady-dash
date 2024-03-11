@@ -2,7 +2,8 @@ import { json } from "@remix-run/node";
 import { Outlet, useLoaderData, useRevalidator } from "@remix-run/react";
 import { createBrowserClient } from "@supabase/ssr";
 import { useEffect, useState } from "react";
-import { createServerClient } from "utils/supabase.server";
+
+import { createServerClient } from "~/utils/supabase.server";
 
 import type { LoaderFunctionArgs } from "@remix-run/node";
 
@@ -43,7 +44,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     },
     {
       headers: response.headers,
-    }
+    },
   );
 };
 
@@ -54,7 +55,7 @@ export default function App() {
   // it is important to create a single instance of Supabase
   // to use across client components - outlet context 👇
   const [supabase] = useState(() =>
-    createBrowserClient(env.SUPABASE_URL, env.SUPABASE_ANON_KEY)
+    createBrowserClient(env.SUPABASE_URL, env.SUPABASE_ANON_KEY),
   );
 
   const serverAccessToken = session?.access_token;

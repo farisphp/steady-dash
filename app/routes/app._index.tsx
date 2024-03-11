@@ -2,7 +2,7 @@ import { LoaderFunctionArgs } from "@remix-run/node";
 import { useOutletContext } from "@remix-run/react";
 import { SupabaseClient, User } from "@supabase/supabase-js";
 
-import { privatePageProtector } from "utils/auth.server";
+import { privatePageProtector } from "~/utils/auth.server";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   await privatePageProtector(request, "/app/login");
