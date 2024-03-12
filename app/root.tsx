@@ -1,7 +1,5 @@
-import { cssBundleHref } from "@remix-run/css-bundle";
 import {
   Links,
-  LiveReload,
   Meta,
   Outlet,
   Scripts,
@@ -10,14 +8,11 @@ import {
 
 import { Toaster } from "./components/ui/toaster";
 
-import styles from "./global.css";
+import styles from "./global.css?url";
 
 import type { LinksFunction } from "@remix-run/node";
 
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: styles },
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
-];
+export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
 export default function App() {
   return (
@@ -32,7 +27,6 @@ export default function App() {
         <Outlet />
         <ScrollRestoration />
         <Scripts />
-        <LiveReload />
         <Toaster />
       </body>
     </html>

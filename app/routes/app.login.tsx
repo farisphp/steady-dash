@@ -55,7 +55,7 @@ export default function Login() {
     if (error && error.status === 400) {
       return toast({
         variant: "destructive",
-        title: "Uh oh! Something's off with your login.",
+        title: "Something's off with your login.",
         description: "Make sure you entered the valid credentials.",
       });
     }
